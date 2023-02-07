@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using UnityEngine.SceneManagement;
 public class SettingsFunctions : MonoBehaviour
 {
     // public Dropdown DropdownResolution;
-    [SerializeField] public TMP_Dropdown DropdownResolution;
+    [SerializeField] private TMP_Dropdown DropdownResolution;
     private List<Resolution> FilteredResolutions;
     //int DropdownResolutionValue;
     private Resolution[] resolutions;
@@ -16,7 +16,7 @@ public class SettingsFunctions : MonoBehaviour
 
     void Start()
     {
-        if (GameObject.FindAnyObjectByType<AudioSource>())
+        if (SceneManager.GetActiveScene().ToString() == "Resolution")
         {
             resolutions = Screen.resolutions;
             FilteredResolutions = new List<Resolution>();
