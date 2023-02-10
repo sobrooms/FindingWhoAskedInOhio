@@ -12,13 +12,13 @@ public class IndefiniteListener : MonoBehaviour
     void Start()
     {
         GameIsPaused = false;
-        SettingsIsOpen = false;    }
+        SettingsIsOpen = false;
+    }
 
     // Update is called once per frame
     void Update()
     {
         Rigidbody CameraO = CameraObject.GetComponent<Rigidbody>();
-        Debug.Log(CameraO);
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameIsPaused)
@@ -30,8 +30,7 @@ public class IndefiniteListener : MonoBehaviour
                 UISettings?.SetActive(true);
                 Time.timeScale = 0f * Time.deltaTime;
                 GameIsPaused = true;
-                CameraO.velocity = Vector3.zero;
-                CameraO.angularVelocity = Vector3.zero;
+                CameraObject.SetActive(false);
             }
         }
         if (Input.GetKeyDown(KeyCode.LeftControl) && GameIsPaused)
@@ -42,6 +41,10 @@ public class IndefiniteListener : MonoBehaviour
         {
             CursorU(true);
         }
+        if (Input.GetKeyDown(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.Semicolon) && Debug.isDebugBuild)
+        {
+            Screen.SetResolution(1270, 1270, false);
+        }
     }
 
     public void ResumeGame()
@@ -51,8 +54,12 @@ public class IndefiniteListener : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
         CursorU(true);
-        CameraO.velocity = Vector3.one;
-        CameraO.angularVelocity = Vector3.one;
+        CameraObject.SetActive(true);
+        if (SettingsIsOpen)
+        {
+            RelSettings.SetActive(false);
+            SettingsIsOpen = false;
+        }
     }
     public void ShowSettings()
     {

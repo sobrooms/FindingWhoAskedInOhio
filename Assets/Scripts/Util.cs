@@ -6,7 +6,6 @@ using System.Reflection;
 
 public class Util : MonoBehaviour
 {
-    bool LogOpened;
     public void LockCursor()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -23,15 +22,6 @@ public class Util : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F1))
         {
             Debug.LogError("Opened dev log");
-            Debug.ClearDeveloperConsole();
-            LogOpened = true;
-        }
-        if (ThisScene.ToString().EndsWith("Scene") && Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (LogOpened)
-            {
-                Debug.Log("Opened settings component");
-            }
         }
     }
 }

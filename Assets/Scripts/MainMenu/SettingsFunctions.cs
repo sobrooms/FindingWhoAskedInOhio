@@ -13,6 +13,8 @@ public class SettingsFunctions : MonoBehaviour
     private Resolution[] resolutions;
     private float currentRefreshrate;
     private int currentResolutionIndex = 0;
+    private int fl;
+    private int fw;
 
     void Start()
     {
@@ -54,7 +56,14 @@ public class SettingsFunctions : MonoBehaviour
 
         Resolution resolution = FilteredResolutions[ResolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, true);
+        fl = resolution.width;
+        fw = resolution.height;
+    }
 
+    public void SetFullScreen(bool Fullscreen)
+    {
+        Screen.fullScreen = Fullscreen;
+        Debug.Log(Screen.fullScreenMode);
     }
     /* public void SetWindowResolution()
     {
