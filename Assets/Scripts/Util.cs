@@ -24,4 +24,8 @@ public class Util : MonoBehaviour
             Debug.LogError("Opened dev log");
         }
     }
+    public void ShowObject(GameObject o)
+    {
+        o.SetActive(true);
+    }
 }
