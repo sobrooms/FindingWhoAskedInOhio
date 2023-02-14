@@ -27,15 +27,18 @@ public class IndefiniteListener : MonoBehaviour
             }
             else if (!GameIsPaused && !SettingsIsOpen)
             {
-                UISettings?.SetActive(true);
-                Time.timeScale = 0f * Time.deltaTime;
-                GameIsPaused = true;
-                CameraObject.SetActive(false);
+                PauseGame();
             }
         }
-        if (Input.GetKeyDown(KeyCode.LeftControl) && GameIsPaused)
+        // if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKey(KeyCode.LeftControl) && !GameIsPaused)
         {
             CursorU(false);
+        }
+        else if (Input.GetKey(KeyCode.LeftControl) && GameIsPaused){}
+        else
+        {
+            CursorU(true);
         }
         if (Input.GetKeyDown(KeyCode.RightControl) || Input.GetMouseButtonDown(1) && !GameIsPaused)
         {
@@ -66,6 +69,7 @@ public class IndefiniteListener : MonoBehaviour
         RelSettings.SetActive(true);
         UISettings.SetActive(false);
         SettingsIsOpen = true;
+        CursorU(false);
     }
     public void BackToPause()
     {
@@ -75,6 +79,15 @@ public class IndefiniteListener : MonoBehaviour
             UISettings.SetActive(true);
             SettingsIsOpen = false;
         }
+    }
+
+    public void PauseGame()
+    {
+        UISettings?.SetActive(true);
+        Time.timeScale = 0f * Time.deltaTime;
+        GameIsPaused = true;
+        CameraObject.SetActive(false);
+        CursorU(false);
     }
     public void CursorU(bool LockOrNo)
     {

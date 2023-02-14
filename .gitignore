@@ -76,3 +76,6 @@ crashlytics-build.properties
 /Assets/TerrainTexturesPackFree/TerrainTextures/Grass_UV01_N.png
 /Assets/TerrainTexturesPackFree/TerrainTextures/Grass_UV02.png
 /Assets/TerrainTexturesPackFree/TerrainTextures/Grass_UV02_N.png
+
+# wakatime
+/Assets/Editor/WakaTime*

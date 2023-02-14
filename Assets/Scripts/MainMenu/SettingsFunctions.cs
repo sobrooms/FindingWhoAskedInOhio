@@ -60,9 +60,9 @@ public class SettingsFunctions : MonoBehaviour
         fw = resolution.height;
     }
 
-    public void SetFullScreen(bool Fullscreen)
+    public void SetFullScreen(bool fullScreenMode)
     {
-        Screen.fullScreen = Fullscreen;
+        Screen.fullScreen = fullScreenMode;
         Debug.Log(Screen.fullScreenMode);
     }
     /* public void SetWindowResolution()

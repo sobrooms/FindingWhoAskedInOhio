@@ -24,7 +24,7 @@ public class AdvancedLevelManager : MonoBehaviour
             float progress = Mathf.Clamp01(op.progress / .9f);
             //Debug.Log(op.progress);
             loadingBar.value = progress;
-            loadingText.text = "<align=center>Loading... " + progress * 100f + "%";
+            loadingText.text = "<align=center>" + progress * 100f + "%";
 
             yield return null;
         }

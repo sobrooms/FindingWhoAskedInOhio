@@ -28,4 +28,9 @@ public class Util : MonoBehaviour
     {
         o.SetActive(true);
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
