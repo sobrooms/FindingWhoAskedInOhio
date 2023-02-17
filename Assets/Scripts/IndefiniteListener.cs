@@ -31,11 +31,10 @@ public class IndefiniteListener : MonoBehaviour
             }
         }
         // if (Input.GetKeyDown(KeyCode.LeftControl))
-        if (Input.GetKey(KeyCode.LeftControl) && !GameIsPaused)
+        if (Input.GetKey(KeyCode.LeftControl))
         {
             CursorU(false);
         }
-        else if (Input.GetKey(KeyCode.LeftControl) && GameIsPaused){}
         else
         {
             CursorU(true);
@@ -56,7 +55,7 @@ public class IndefiniteListener : MonoBehaviour
         UISettings?.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
-        CursorU(true);
+        CursorU(false);
         CameraObject.SetActive(true);
         if (SettingsIsOpen)
         {

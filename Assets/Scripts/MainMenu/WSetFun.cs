@@ -7,6 +7,7 @@ public class WSetFun : MonoBehaviour
     public GameObject ResolutionButton;
     public void SetGraphicsQuality(int GraphicsIndex)
     {
+        PlayerPrefs.SetInt("GraphicsQuality", GraphicsIndex);
         QualitySettings.SetQualityLevel(GraphicsIndex);
     }
 
