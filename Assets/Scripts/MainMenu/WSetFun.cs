@@ -37,10 +37,6 @@ public class WSetFun : MonoBehaviour
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = framerate;
     }
-    public void SetPostProcessing()
-    {
-        
-    }
     void Start()
     {
         if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.WebGLPlayer && ResolutionButton)
