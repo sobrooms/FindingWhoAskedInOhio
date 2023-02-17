@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Rendering.PostProcessing;
 public class WSetFun : MonoBehaviour
 {
     public GameObject ResolutionButton;
+    public GameObject Camera;
     public void SetGraphicsQuality(int GraphicsIndex)
     {
         PlayerPrefs.SetInt("GraphicsQuality", GraphicsIndex);
@@ -35,6 +36,10 @@ public class WSetFun : MonoBehaviour
     {
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = framerate;
+    }
+    public void SetPostProcessing()
+    {
+        
     }
     void Start()
     {
