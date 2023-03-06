@@ -8,6 +8,9 @@ public class DataSave : MonoBehaviour
     public Toggle FPSToggle;
     public TMP_Dropdown TargFPSDropdown;
     public TMP_Dropdown GraphicsDropdown;
+    public TMP_Dropdown AntiAliasingModeDropdown;
+    public TMP_Dropdown ResolutionDropdown;
+    public Toggle FullScreenToggle;
 
     // only run on scene open
     private void Start()
@@ -31,13 +34,20 @@ public class DataSave : MonoBehaviour
         if (GraphicsDropdown)
             GraphicsDropdown.value = PlayerPrefs.GetInt("GraphicsQuality");
 
-        if (Application.platform == RuntimePlatform.WindowsEditor && Debug.isDebugBuild)
+        if (AntiAliasingModeDropdown)
+            AntiAliasingModeDropdown.value = PlayerPrefs.GetInt("AntiAliasingMode");
+        if (ResolutionDropdown)
+            ResolutionDropdown.value = PlayerPrefs.GetInt("ResolutionIndex");
+        if (FullScreenToggle)
         {
-            Debug.LogFormat(PlayerPrefs.GetInt("TargetFPSDropdownCurrentValue").ToString(), PlayerPrefs.GetInt("FPSCounterToggled").ToString());
-        }
-        else if (Debug.isDebugBuild && Application.platform != RuntimePlatform.WindowsEditor)
-        {
-            Debug.LogErrorFormat(PlayerPrefs.GetInt("TargetFPSDropdownCurrentValue").ToString(), PlayerPrefs.GetInt("FPSCounterToggled").ToString());
+            if (PlayerPrefs.GetInt("FullScreenToggleValue") == 1)
+            {
+                FullScreenToggle.isOn = true;
+            }
+            else if (PlayerPrefs.GetInt("FullScreenToggleValue") == 0)
+            {
+                FullScreenToggle.isOn = false;
+            } 
         }
     }
 }

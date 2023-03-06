@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class SettingsFunctions : MonoBehaviour
 {
     // public Dropdown DropdownResolution;
-    [SerializeField] private TMP_Dropdown DropdownResolution;
+    public TMP_Dropdown DropdownResolution;
     private List<Resolution> FilteredResolutions;
     //int DropdownResolutionValue;
     private Resolution[] resolutions;
@@ -18,7 +18,9 @@ public class SettingsFunctions : MonoBehaviour
 
     void Start()
     {
-        if (SceneManager.GetActiveScene().ToString() == "Resolution")
+        /*if (SceneManager.GetActiveScene().name == "Resolution")
+        {*/
+        if (DropdownResolution && DropdownResolution?.name == "Set resolution")
         {
             resolutions = Screen.resolutions;
             FilteredResolutions = new List<Resolution>();
@@ -47,7 +49,7 @@ public class SettingsFunctions : MonoBehaviour
             DropdownResolution.AddOptions(options);
             DropdownResolution.value = currentResolutionIndex;
             DropdownResolution.RefreshShownValue();
-
+            //}
         }
     }
     public void SetWindowResolution(int ResolutionIndex)
@@ -58,12 +60,18 @@ public class SettingsFunctions : MonoBehaviour
         Screen.SetResolution(resolution.width, resolution.height, true);
         fl = resolution.width;
         fw = resolution.height;
+        PlayerPrefs.SetInt("ResolutionIndex", ResolutionIndex);
+        Debug.Log("Changed window resolution index in PlayerPrefs: " + PlayerPrefs.GetInt("ResolutionIndex"));
     }
 
     public void SetFullScreen(bool fullScreenMode)
     {
         Screen.fullScreen = fullScreenMode;
         Debug.Log(Screen.fullScreenMode);
+        if (fullScreenMode)
+            PlayerPrefs.SetInt("FullScreenToggleValue", 1);
+        else
+            PlayerPrefs.SetInt("FullScreenToggleValue", 0);
     }
     /* public void SetWindowResolution()
     {

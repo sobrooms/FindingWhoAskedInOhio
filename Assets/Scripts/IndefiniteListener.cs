@@ -8,17 +8,19 @@ public class IndefiniteListener : MonoBehaviour
     private bool GameIsPaused;
     private bool SettingsIsOpen;
     public GameObject CameraObject;
+    private Vector3 defaultVelocity;
     // Start is called before the first frame update
     void Start()
     {
         GameIsPaused = false;
         SettingsIsOpen = false;
+        defaultVelocity = CameraObject.GetComponent<Camera>().velocity;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Rigidbody CameraO = CameraObject.GetComponent<Rigidbody>();
+        //Rigidbody CameraO = CameraObject.GetComponent<Rigidbody>();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameIsPaused)
@@ -51,12 +53,12 @@ public class IndefiniteListener : MonoBehaviour
 
     public void ResumeGame()
     {
-        Rigidbody CameraO = CameraObject.GetComponent<Rigidbody>();
+        //Rigidbody CameraO = CameraObject.GetComponent<Rigidbody>();
         UISettings?.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
         CursorU(false);
-        CameraObject.SetActive(true);
+        //CameraObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         if (SettingsIsOpen)
         {
             RelSettings.SetActive(false);
@@ -85,7 +87,7 @@ public class IndefiniteListener : MonoBehaviour
         UISettings?.SetActive(true);
         Time.timeScale = 0f * Time.deltaTime;
         GameIsPaused = true;
-        CameraObject.SetActive(false);
+        //CameraObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         CursorU(false);
     }
     public void CursorU(bool LockOrNo)

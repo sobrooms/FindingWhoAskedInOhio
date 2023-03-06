@@ -6,8 +6,8 @@ public class DebugChecker : MonoBehaviour
     void Update()
     {
         if (Debug.isDebugBuild)
-        {
-            MainMenuDebugText.SetActive(true);
-        }
+            MainMenuDebugText.GetComponent<TMPro.TMP_Text>().text = "<align=center>Finding Who Asked In Ohio - Development";
+        else 
+            MainMenuDebugText.GetComponent<TMPro.TMP_Text>().text = "<align=center>Finding Who Asked In Ohio";
     }
 }
