@@ -12,7 +12,7 @@ public class FPSCounter : MonoBehaviour
 
     private void Update()
     {
-        if (FramerateText)
+        if (FramerateText.gameObject.activeInHierarchy)
         {
             if (Time.unscaledTime > Timer)
             {

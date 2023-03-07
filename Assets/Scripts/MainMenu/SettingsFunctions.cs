@@ -70,7 +70,7 @@ public class SettingsFunctions : MonoBehaviour
         Debug.Log(Screen.fullScreenMode);
         if (fullScreenMode)
             PlayerPrefs.SetInt("FullScreenToggleValue", 1);
-        else
+        else if (!fullScreenMode)
             PlayerPrefs.SetInt("FullScreenToggleValue", 0);
     }
     /* public void SetWindowResolution()

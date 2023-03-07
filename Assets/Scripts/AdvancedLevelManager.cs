@@ -8,8 +8,6 @@ public class AdvancedLevelManager : MonoBehaviour
     public GameObject loadingPanel;
     public Slider loadingBar;
     public TMP_Text loadingText;
-    public GameObject SettingsUI;
-    public GameObject MainUI;
     public void LoadLevel(string levelName)
     {
         StartCoroutine(LoadSceneAsync(levelName));
@@ -30,8 +28,12 @@ public class AdvancedLevelManager : MonoBehaviour
         }
     }
 
-    public void HideMe(GameObject obj)
+    public void HideMe(GameObject/*[]*/ obj)
     {
-        obj.SetActive(false);
+        //foreach (var item in obj)
+        //{
+            if (!/*item*/obj.activeInHierarchy)
+                /*item*/obj.SetActive(false);
+        //}
     }
 }

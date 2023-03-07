@@ -211,15 +211,13 @@ public class FirstPersonController : MonoBehaviour
         {
             cameraCanMove = false;
             cameraPaused = true;
-            playerCamera.gameObject.SetActive(false);
+            sprintBar.gameObject.SetActive(false);
             Debug.Log("Game pause state changed: "+ cameraPaused);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape) && cameraPaused && !cameraCanMove)
+        } else if (Input.GetKeyDown(KeyCode.Escape) && cameraPaused && !cameraCanMove)
         {
             cameraCanMove = true;
             cameraPaused = false;
-            playerCamera.gameObject.SetActive(true);
+            sprintBar.gameObject.SetActive(true);
             Debug.Log("Game pause state changed: "+ cameraPaused);
         }
         if(cameraCanMove)
@@ -280,7 +278,7 @@ public class FirstPersonController : MonoBehaviour
             {
                 if (playerCamera.fieldOfView < 5f)
                     playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, zoomFOV, zoomStepTime * Time.deltaTime);
-                else;
+                else {}
             }
             else if(!isZoomed && !isSprinting)
             {
