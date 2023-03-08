@@ -6,8 +6,8 @@ A game made with Unity.
 * I swear the music sounds terrible
 
 # TODO
-[*] Add XLua support
-[*] More proper ui element fit
+- [x] Add XLua support
+- [x] More proper ui element fit (MainScene)
 
 
 # To execute Lua scripts
