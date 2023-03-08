@@ -23,7 +23,7 @@ public class Lua : MonoBehaviour
     {
         try
         {
-            if (Application.platform != RuntimePlatform.WindowsEditor)
+            if (Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.WindowsPlayer && Debug.isDebugBuild)
             {
                 if (!Directory.Exists(DirBuild[0]))
                     Directory.CreateDirectory(DirBuild[0]);
@@ -38,7 +38,7 @@ public class Lua : MonoBehaviour
                 di_update = new(DirBuild[2]);
                 di_fixedUpdate = new(DirBuild[3]);
                 diL = new(DirBuild[0]);
-            } else if (Application.platform == RuntimePlatform.WindowsEditor)
+            } else if (Application.platform == RuntimePlatform.WindowsEditor && Debug.isDebugBuild)
             {
                 di_start = new(DirDebug[0]);
                 di_update = new(DirDebug[1]);
@@ -66,6 +66,7 @@ public class Lua : MonoBehaviour
             foreach (var exec in LuaFiles)
             {
                 bool LogThis = true;
+                // execute each line, needs improvement by running lua code using luac like windy
                 string[] lines = System.IO.File.ReadAllLines(@exec.ToString());
                 if (lines.Length > 0)
                 {
